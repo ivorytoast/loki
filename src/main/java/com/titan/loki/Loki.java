@@ -16,7 +16,10 @@ public class Loki implements Runnable {
         try (ZContext context = new ZContext()) {
             //  Socket to talk to server
             ZMQ.Socket requester = context.createSocket(SocketType.REQ);
-            requester.connect("tcp://0.0.0.0:5559");
+            log.info("Connecting to queue now...");
+            boolean didConnect = requester.connect("tcp://queue:5559");
+            log.info("Did I connect (Loki): " + didConnect);
+
             for (int request_nbr = 0; request_nbr < 10; request_nbr++) {
                 requester.send("One", 0);
                 String reply = requester.recvStr(0);
