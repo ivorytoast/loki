@@ -60,8 +60,18 @@ public class OrderRequest {
                 ", side=" + this.side + "]";
     }
 
-    public String toFixMessage() {
-        return "8=FIX?1=ivorytoast?2=spx?3=78?4=67.30?5=buy";
+    public String toFixMessage(OrderRequest order) {
+        return "8=FIX"
+                + "?1="
+                + order.getUserID()
+                + "?2="
+                + order.getSymbol()
+                + "?3="
+                + order.getQuantity()
+                + "?4="
+                + order.getPrice()
+                + "?5="
+                + order.getSide();
     }
 
 }

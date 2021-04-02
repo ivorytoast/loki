@@ -14,7 +14,7 @@ public class LokiService {
     public void submitRequest(OrderRequest request) {
         log.info("Submitting request");
 
-        String fixMessage = request.toFixMessage();
+        String fixMessage = request.toFixMessage(request);
 
         try (ZContext context = new ZContext()) {
             ZMQ.Socket requester = context.createSocket(SocketType.REQ);
