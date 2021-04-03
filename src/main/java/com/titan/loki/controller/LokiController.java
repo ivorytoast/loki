@@ -18,9 +18,9 @@ public class LokiController {
     }
 
     @PostMapping("/v1/request/submit")
-    public void submitRequest(@RequestBody OrderRequest request) {
-        log.info("Using endpoint that only sends once!");
-        service.submitRequest(request);
+    public String submitRequest(@RequestBody OrderRequest request) {
+        log.info("Hit: /v1/request/submit on (Loki). Submitting new request: " + request.toString());
+        return service.submitRequest(request);
     }
 
 }

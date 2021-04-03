@@ -60,6 +60,16 @@ public class OrderRequest {
                 ", side=" + this.side + "]";
     }
 
+    public String validate() {
+        if (userID.isEmpty()) return "Username cannot be empty...";
+        if (symbol.isEmpty()) return "Symbol cannot be empty...";
+        if (quantity <= 0) return "Quantity cannot be less than 0";
+        if (price <= 0.0) return "Price cannot be less than 0";
+        if (side.isEmpty()) return "Side cannot be empty";
+        if (!side.equals("buy") && !side.equals("sell")) return "Side must either be 'buy' or 'sell'";
+        return "";
+    }
+
     public String toFixMessage(OrderRequest order) {
         return "8=FIX"
                 + "?1="
