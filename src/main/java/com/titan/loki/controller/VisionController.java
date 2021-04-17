@@ -21,6 +21,11 @@ public class VisionController {
         this.service = service;
     }
 
+    @GetMapping("/status")
+    public String getStatus() {
+        return "UP";
+    }
+
     @GetMapping("/v1/users/all")
     public List<User> getAllUsersInDatabase() {
         return service.getAllUsersInDatabase();

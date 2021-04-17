@@ -17,6 +17,11 @@ public class LokiController {
         this.service = service;
     }
 
+    @GetMapping("/status")
+    public String getStatus() {
+        return "UP";
+    }
+
     @PostMapping("/v1/request/submit")
     public String submitRequest(@RequestBody OrderRequest request) {
         log.info("Hit: /v1/request/submit on (Loki). Submitting new request: " + request.toString());
